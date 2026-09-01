@@ -14,6 +14,7 @@ void A0221ATSensor::set_uart_parent(esphome::uart::UARTComponent *parent) {
 
 void A0221ATSensor::update() {
   // Send trigger command — adjust if needed
+  ESP_LOGD(TAG, "Triggering sensor read");
   this->uart_->flush();
   const char *trigger = "R\r\n";  // Some models use "\r" or "U"
   this->uart_->write_str(trigger);
